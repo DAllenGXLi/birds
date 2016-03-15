@@ -89,18 +89,62 @@ var levalData = [
                 options: [
                     {
                         attrValue: '发烧',
-                        imgURL: '../the_url_of_the_image/img1.png'
+                        imgURL: './img/1.jpg'
                     },
                     {
                         attrValue: '流行感冒',
-                        imgURL: '../the_url_of_the_image/img2.png'
+                        imgURL: './img/1.jpg'
                     },
                     {
                         attrValue: '普通感冒',
-                        imgURL: '../the_url_of_the_image/img3.png'
+                        imgURL: './img/1.jpg'
+                    }
+                ]
+            },
+            {
+                attrName: '其他',
+                attrType: HAS_CHILD_LEVAL,
+                childLeval: [
+                    {
+                        attrName: '妇产科',
+                        attrType: NO_CHILD_LEVAL,
+                        options: [
+                            {
+                                attrValue: '发烧',
+                                imgURL: './img/1.jpg'
+                            },
+                            {
+                                attrValue: '流行感冒',
+                                imgURL: './img/1.jpg'
+                            },
+                            {
+                                attrValue: '普通感冒',
+                                imgURL: './img/1.jpg'
+                            }
+                        ]
+                    },
+                    {
+                        attrName: '男科',
+                        attrType: NO_CHILD_LEVAL,
+                        options: [
+                            {
+                                attrValue: '发烧',
+                                imgURL: './img/1.jpg'
+                            },
+                            {
+                                attrValue: '流行感冒',
+                                imgURL: './img/1.jpg'
+                            },
+                            {
+                                attrValue: '普通感冒',
+                                imgURL: './img/1.jpg'
+                            }
+                        ]
                     }
                 ]
             }
         ]
     }
-]
+];
+
+levalData = JSON.stringify(levalData);

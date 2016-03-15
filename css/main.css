@@ -12,10 +12,16 @@ body {
 }
 
 .attribute {
-	background-color: blue;
+	/*background-color: blue;*/
 	height: 40px;
+	width: 40px;
 	border-radius: 10px;
 	cursor: pointer;
+}
+
+.attributeImg {
+	height: 40px;;
+	width: 40px;
 }
 
 .attrChoosed {
