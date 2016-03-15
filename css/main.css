@@ -1,0 +1,34 @@
+body {
+	background-color: #DDDDDD;
+}
+
+.body {
+	/*background-color: #FFFF00;*/
+	margin-top: 60px;
+}
+
+.attrLabel {
+	cursor: pointer;
+}
+
+.attribute {
+	background-color: blue;
+	height: 40px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.attrChoosed {
+	border-style:solid;
+	border-color: red;
+	border-width: 3;
+}
+
+/*属性一级列表*/
+.attrNavigationList {
+	border-bottom-style: inset;
+	border-bottom-color: yellow;
+	border-bottom-width: 5;
+}
+
+/*属性一级列表ul*/
