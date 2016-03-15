@@ -1,6 +1,6 @@
 
     // // 当没有子层时候
-    // leval: {
+    // level: {
     //     attrName: '',
     //     attrTypeL '',
     //     options: [
@@ -10,19 +10,19 @@
     //     ]
     // }
     // // 当还有子层时候
-    // leval: {
+    // level: {
     //     attrName: '',
     //     attrType: '',
-    //     childLeval: [
-    //         leval: {},
-    //         leval: {},
+    //     childlevel: [
+    //         level: {},
+    //         level: {},
     //         ...
     //     ]
     // }
     // // 后台接口数据格式
     // [
-    //     leval: {},
-    //     leval: {},
+    //     level: {},
+    //     level: {},
     //     ...
     // ]
     // // 前端回送后台检索数据格式
@@ -32,14 +32,14 @@
     // ]
     // 
     // e.g
-    // var levalData = [
+    // var levelData = [
 //     {
 //         attrName: '儿科'，
-//         attrType: HAS_CHILD_LEVAL,
-//         childLeval: [
+//         attrType: HAS_CHILD_LEVEL,
+//         childlevel: [
 //             {
 //                 attrName: '感冒'，
-//                 attrType: NO_CHILD_LEVAL,
+//                 attrType: NO_CHILD_LEVEL,
 //                 options: [
 //                     {
 //                         attrValue: '发烧',
@@ -57,35 +57,35 @@
 //             }，
 //             {
 //                 attrName: '内科'，
-//                 attrType: HAS_CHILD_LEVAL,
-//                 childLeval: {
+//                 attrType: HAS_CHILD_LEVEL,
+//                 childlevel: {
 //                     {
-//                         // leval内部
+//                         // level内部
 //                     },
 //                     {
-//                         // leval内部
+//                         // level内部
 //                     }
 //                 }
 //             }
 //         ]
 //     },
 //     {
-//         // leval内部
+//         // level内部
 //     },
 //     // ...
 // ]
 
-var NO_CHILD_LEVAL = 0,
-    HAS_CHILD_LEVAL = 1;
+var NO_CHILD_LEVEL = 0,
+    HAS_CHILD_LEVEL = 1;
 
-var levalData = [
+var levelData = [
     {
         attrName: '儿科',
-        attrType: HAS_CHILD_LEVAL,
-        childLeval: [
+        attrType: HAS_CHILD_LEVEL,
+        childlevel: [
             {
                 attrName: '感冒',
-                attrType: NO_CHILD_LEVAL,
+                attrType: NO_CHILD_LEVEL,
                 options: [
                     {
                         attrValue: '发烧',
@@ -103,11 +103,11 @@ var levalData = [
             },
             {
                 attrName: '其他',
-                attrType: HAS_CHILD_LEVAL,
-                childLeval: [
+                attrType: HAS_CHILD_LEVEL,
+                childlevel: [
                     {
                         attrName: '妇产科',
-                        attrType: NO_CHILD_LEVAL,
+                        attrType: NO_CHILD_LEVEL,
                         options: [
                             {
                                 attrValue: '发烧',
@@ -125,7 +125,7 @@ var levalData = [
                     },
                     {
                         attrName: '男科',
-                        attrType: NO_CHILD_LEVAL,
+                        attrType: NO_CHILD_LEVEL,
                         options: [
                             {
                                 attrValue: '发烧',
@@ -147,4 +147,17 @@ var levalData = [
     }
 ];
 
-levalData = JSON.stringify(levalData);
+levelData = JSON.stringify(levelData);
+
+[
+    {
+        chineseName: '', // 中文名
+        latinName: '', // 拉丁名
+        alias: '', // 别名
+        order: '', // 目
+        family: '', // 科
+        genus: '', // 属
+        description: '' // 描述
+    },
+    // ...
+]

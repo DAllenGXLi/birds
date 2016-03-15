@@ -75,64 +75,64 @@ var ajaxAttrList = function(ajaxURL) {
 /**
  * 根据ajax列表数据生成属性列表
  */
-var drawAttributeList = function(levalData) {
+var drawAttributeList = function(levelData) {
 	var $attrNav = '';
-	if (!levalData || levalData == '') {
+	if (!levelData || levelData == '') {
 		return false;
 	}
-	levalData = JSON.parse(levalData);
-	if (typeof levalData == 'string') {
+	levelData = JSON.parse(levelData);
+	if (typeof levelData == 'string') {
 		return false;
 	}
-	// 提取levalData内部信息
-	for (var i = 0; i < levalData.length; i++) {
+	// 提取levelData内部信息
+	for (var i = 0; i < levelData.length; i++) {
 		// 一级列表头
 		$attrNav = $('<li role="presentation"  class="active attrNavigationList">\
-						<a role="button" data-toggle="collapse" href="#'+levalData[i].attrName+'" aria-expanded="false" aria-controls="collapseExample">'+levalData[i].attrName+'</a>\
+						<a role="button" data-toggle="collapse" href="#'+levelData[i].attrName+'" aria-expanded="false" aria-controls="collapseExample">'+levelData[i].attrName+'</a>\
 					</li>\
-					<div class="collapse" id="'+levalData[i].attrName+'">\
-						<div class="well" id="'+levalData[i].attrName+'Content"></div>\
+					<div class="collapse" id="'+levelData[i].attrName+'">\
+						<div class="well" id="'+levelData[i].attrName+'Content"></div>\
 					</div>');
 		$('ul.attrNavigation').append($attrNav);
 		// 递归绘制下级列表
-		drwaChildAttributeList(levalData[i]);
+		drwaChildAttributeList(levelData[i]);
 	}
 }
 
-var drwaChildAttributeList = function(leval) {
+var drwaChildAttributeList = function(level) {
 	// 列表
-	console.log(leval.attrName)
-	if (leval.attrType == HAS_CHILD_LEVAL) {
+	console.log(level.attrName)
+	if (level.attrType == HAS_CHILD_LEVEL) {
 		var $attrNav = '';
-		for (var j = 0; j < leval.childLeval.length; j++) {
+		for (var j = 0; j < level.childlevel.length; j++) {
 			$attrNav = '<div class="panel panel-default">\
 								<div class="panel-heading" role="tab" id="headingOne">\
 									<h4 class="panel-title">\
-										<a role="button" data-toggle="collapse" data-parent="#accordion" href="#'+leval.childLeval[j].attrName+'" aria-expanded="false" aria-controls="collapseOne">'+leval.childLeval[j].attrName+'</a>\
+										<a role="button" data-toggle="collapse" data-parent="#accordion" href="#'+level.childlevel[j].attrName+'" aria-expanded="false" aria-controls="collapseOne">'+level.childlevel[j].attrName+'</a>\
 									</h4>\
 								</div>\
-								<div id="'+leval.childLeval[j].attrName+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">\
-									<div class="panel-body" id="'+leval.childLeval[j].attrName+'Content"></div>\
+								<div id="'+level.childlevel[j].attrName+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">\
+									<div class="panel-body" id="'+level.childlevel[j].attrName+'Content"></div>\
 								</div>\
 							</div>';
-			$('#'+leval.attrName+'Content').append($attrNav);
-			arguments.callee(leval.childLeval[j]);
+			$('#'+level.attrName+'Content').append($attrNav);
+			arguments.callee(level.childlevel[j]);
 		}
 	}
 	// options
-	else if (leval.attrType == NO_CHILD_LEVAL) {
+	else if (level.attrType == NO_CHILD_LEVEL) {
 		// options属性选项
 		var $attributes = '';
-		for (var i = 0; i < leval.options.length; i++) {
+		for (var i = 0; i < level.options.length; i++) {
 			$attributes += '<div class="col-md-3">\
-								<div class="attribute" attrName="'+leval.attrName+'" attrValue="'+leval.options[i].attrValue+'">\
-									<img class="attributeImg" src="'+leval.options[i].imgURL+'" />\
+								<div class="attribute" attrName="'+level.attrName+'" attrValue="'+level.options[i].attrValue+'">\
+									<img class="attributeImg" src="'+level.options[i].imgURL+'" />\
 								</div>\
 							</div>';
 		}
-		$('#'+leval.attrName+'Content').append($attributes);
+		$('#'+level.attrName+'Content').append($attributes);
 	}
 }
 
 init();
-drawAttributeList(levalData);
+drawAttributeList(levelData);
