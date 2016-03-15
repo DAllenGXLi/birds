@@ -101,7 +101,6 @@ var drawAttributeList = function(levelData) {
 
 var drwaChildAttributeList = function(level) {
 	// 列表
-	console.log(level.attrName)
 	if (level.attrType == HAS_CHILD_LEVEL) {
 		var $attrNav = '';
 		for (var j = 0; j < level.childlevel.length; j++) {
@@ -134,5 +133,33 @@ var drwaChildAttributeList = function(level) {
 	}
 }
 
+var drawBirdsList = function(birdsData) {
+	if (!birdsData || birdsData == '') {
+		return false;
+	}
+	var birds = JSON.parse(birdsData);
+	if (typeof birds == 'string') {
+		return false;
+	}
+	var $birds = '';
+	for (var i = 0; i < birds.length; i++) {
+		$birds += '<div class="col-md-4">\
+	                    <div class="thumbnail">\
+	                        <img src="'+birds[i].imgURL+'" alt="bird">\
+	                        <div class="caption">\
+	                            <b>'+birds[i].chineseName+'</b>\
+	                            <span>['+birds[i].latinName+']</span>\
+	                            <p>'+birds[i].order+'目,'+birds[i].family+'科,'+birds[i].genus+'属</p>\
+	                            <p>\
+	                            	'+birds[i].description+'<a> >>更多</a>\
+	                            </p>\
+	                        </div>\
+	                    </div>\
+	                </div>';
+	}
+	$('#birdsContent').append($birds);
+}
+
 init();
 drawAttributeList(levelData);
+drawBirdsList(birdsData);
