@@ -8,14 +8,16 @@ var attrData = [];
  */
 var init = function() {
 	$('.attribute').click(function(event) {
+		for (var i = 0; i < attrData.length; i++)
+			console.log(attrData[i])
 		// 此值用于判断是否已经存在该属性标签
 		var hasAttrLabel = false;
 		var attrLabel;
 		
 		//检查数组中是否已经有该属性
 		setTimeout(function() {
-			var attrName = $(event.target).attr('attrName');
-			var attrValue = $(event.target).attr('attrValue');
+			var attrName = $(event.target).parent().attr('attrName');
+			var attrValue = $(event.target).parent().attr('attrValue');
 			for (var i=0, length=attrData.length; i<length; i++) {
 				// 如果已经存在该属性名称的标签	
 				if (attrData[i].attrName == attrName) {
@@ -23,24 +25,24 @@ var init = function() {
 					// 如果该属性值不相同，则替换并且重新请求ajax，否则不做处理
 					if (attrData[i].attrValue != attrValue) {
 						// 清空该样式其他属性的选中框样式
-						var attrClass = $('.attribute[attrName="'+attrName+'"]').attr('class').replace('attrChoosed', '');
-						$('.attribute[attrName="'+attrName+'"]').attr('class',attrClass);
-						// 为该属性添加选中框样式
-						$(event.target).attr('class', $(event.target).attr('class')+' attrChoosed');
+						// var attrClass = $('.attribute[attrName="'+attrName+'"]').attr('class').replace('attrChoosed', '');
+						// $('.attribute[attrName="'+attrName+'"]').attr('class',attrClass);
 						// 替换文本值
 						$('.attrLabel[attrName="'+attrName+'"]').text(attrName+':'+attrValue);
 						// 修改attrData属性值
 						attrData[i].attrValue = attrValue;
+						// 为该属性添加选中框样式
+						// $(event.target).attr('class', $(event.target).attr('class')+' attrChoosed');
 					}	
 				}
 			}
 			// 如果标签不存在，则添加标签
 			if (!hasAttrLabel) {
-				attrLabel = $('<span class="label label-primary attrLabel" attrName="'+$(event.target).attr('attrName')+'" attrValue="'+$(event.target).attr('attrValue')+'">'+$(event.target).attr('attrName')+':'+$(event.target).attr('attrValue')+'</span>');
+				attrLabel = $('<span class="label label-primary attrLabel" attrName="'+attrName+'" attrValue="'+attrValue+'">'+attrName+':'+attrValue+'</span>');
 				$('.labelContent').append(attrLabel);
 				attrData.push({
-					'attrName': $(event.target).attr('attrName'),
-					'attrValue': $(event.target).attr('attrValue')
+					'attrName': attrName,
+					'attrValue': attrValue
 				});
 				// 为新标签注册点击监听
 				attrLabel.click(function(event) {
@@ -54,22 +56,10 @@ var init = function() {
 					// 延时处理ajax请求
 				})
 			}
-			console.log(attrData.length)
 		}, 100);
 		
 		// 延时处理ajax请求
 	});
-}
-
-
-
-/**
- * 根据attrData请求ajax数据，并加载到内容框
- */
-var ajaxAttrList = function(ajaxURL) {
-	$.post(ajaxURL, JSON.stringfy(attrData), function(data, status){
-  		// 处理ajax数据
-  	});
 }
 
 /**
@@ -141,9 +131,9 @@ var drawBirdsList = function(birdsData) {
 	if (typeof birds == 'string') {
 		return false;
 	}
-	var $birds = '';
 	for (var i = 0; i < birds.length; i++) {
-		$birds += '<div class="col-md-4">\
+		var $bird = '';
+		$bird = '<div class="col-md-4" id="'+birds[i].chineseName+'">\
 	                    <div class="thumbnail">\
 	                        <img src="'+birds[i].imgURL+'" alt="bird">\
 	                        <div class="caption">\
@@ -156,10 +146,16 @@ var drawBirdsList = function(birdsData) {
 	                        </div>\
 	                    </div>\
 	                </div>';
+        $('#birdsContent').append($bird);
 	}
-	$('#birdsContent').append($birds);
 }
 
-init();
-drawAttributeList(levelData);
-drawBirdsList(birdsData);
+/**
+ * 根据attrData请求ajax数据，并加载到内容框
+ */
+var ajaxAttrList = function(ajaxURL) {
+	$.post(ajaxURL, JSON.stringfy(attrData), function(birdsData){
+  		// 处理ajax数据
+  		drawBirdsList(birdsData)
+  	});
+}

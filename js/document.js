@@ -166,7 +166,7 @@ levelData = JSON.stringify(levelData);
 var birdsData = [
     {
         imgURL: './img/1.jpg', // 图片链接
-        chineseName: 'chineseName', // 中文名
+        chineseName: 'chineseName1', // 中文名
         latinName: 'latinName', // 拉丁名
         alias: 'alias', // 别名
         order: 'order', // 目
@@ -176,7 +176,7 @@ var birdsData = [
     },
     {
         imgURL: './img/1.jpg', // 图片链接
-        chineseName: 'chineseName', // 中文名
+        chineseName: 'chineseName2', // 中文名
         latinName: 'latinName', // 拉丁名
         alias: 'alias', // 别名
         order: 'order', // 目
@@ -186,7 +186,7 @@ var birdsData = [
     },
     {
         imgURL: './img/1.jpg', // 图片链接
-        chineseName: 'chineseName', // 中文名
+        chineseName: 'chineseName3', // 中文名
         latinName: 'latinName', // 拉丁名
         alias: 'alias', // 别名
         order: 'order', // 目
@@ -196,7 +196,7 @@ var birdsData = [
     },
     {
         imgURL: './img/1.jpg', // 图片链接
-        chineseName: 'chineseName', // 中文名
+        chineseName: 'chineseName4', // 中文名
         latinName: 'latinName', // 拉丁名
         alias: 'alias', // 别名
         order: 'order', // 目

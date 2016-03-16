@@ -22,90 +22,7 @@
 			<div class="col-md-4 seek-info">
 				<ul class="nav nav-pills nav-stacked attrNavigation">
 					<!-- begin of 一级列表 -->
-					<li role="presentation" class="active attrNavigationList">
-						<a role="button" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapseExample">一级属性</a>
-					</li>
-					<div class="collapse" id="collapse1">
-						<div class="well">
-							<!-- 二级属性 -->
-							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-								<!-- begin of attribute -->
-								<div class="panel panel-default">
-									<div class="panel-heading" role="tab" id="headingTwo">
-										<h4 class="panel-title">
-											<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">二级属性</a>
-										</h4>
-									</div>
-									<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-										<div class="panel-body">
-											<div class="col-md-3">
-												<div class="attribute" attrName="attrName1" attrValue="attrValue2">
-													<img class="attributeImg" src="./img/1.jpg" />
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="attribute" attrName="attrName1" attrValue="attrValue3">
-													<img class="attributeImg" src="./img/1.jpg" />
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="attribute" attrName="attrName2" attrValue="attrValue4">
-													<img class="attributeImg" src="./img/1.jpg" />
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="attribute" attrName="attrName2" attrValue="attrValue5">
-													<img class="attributeImg" src="./img/1.jpg" />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- end of attribute -->
-								
-								<!-- begin of attribute -->
-								<div class="panel panel-default">
-									<div class="panel-heading" role="tab" id="headingThree">
-										<h4 class="panel-title">
-											<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">二级属性</a>
-										</h4>
-									</div>
-									<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-										<div class="panel-body">...</div>
-									</div>
-								</div>
-								<!-- end of attribute -->
-
-								<!-- begin of attribute -->
-								<div class="panel panel-default">
-									<div class="panel-heading" role="tab" id="headingOne">
-										<h4 class="panel-title">
-											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">二级属性</a>
-										</h4>
-									</div>
-									<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-										<div class="panel-body">...</div>
-									</div>
-								</div>
-								<!-- end of attribute -->
-
-							</div>
-						</div>
-					</div>
-
-					<li role="presentation" class="active attrNavigationList">
-						<a role="button" data-toggle="collapse" href="#collapse2" aria-expanded="false" aria-controls="collapseExample">一级属性</a>
-					</li>
-					<div class="collapse" id="collapse2">
-						<div class="well">...</div>
-					</div>
-					<!-- 一级属性 -->
-					<li role="presentation"  class="active attrNavigationList">
-						<a role="button" data-toggle="collapse" href="#collapse3" aria-expanded="false" aria-controls="collapseExample">一级属性</a>
-					</li>
-					<div class="collapse" id="collapse3">
-						<div class="well">...</div>
-					</div>
+					
 					<!-- end of 一级属性 -->
 				</ul>
 			</div>
@@ -129,25 +46,16 @@
 				</div>
 				<!-- 鸟类检索结果容器 -->
 				<div id="birdsContent">
-	                <!-- 具体项 -->
-	                <div class="col-md-4">
-	                    <div class="thumbnail">
-	                        <img src="./img/1.jpg" alt="bird">
-	                        <div class="caption">
-	                            <b>chineseName</b>
-	                            <span>[latinName]</span>
-	                            <p>xx目,xx科,xx属</p>
-	                            <p>
-	                            	这里是描述信息，这里是描述信息，这里是描述信息，这里是描述信息...<a>>>更多</a>
-	                            </p>
-	                        </div>
-	                    </div>
-	                </div>
+	                <!-- content -->
 				</div>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="./js/document.js"></script>
 	<script type="text/javascript" src="./js/main.js"></script>
+	<script type="text/javascript">
+		drawAttributeList(levelData);
+		init();
+	</script>
 </body>
 </html>
