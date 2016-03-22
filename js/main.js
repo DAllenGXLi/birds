@@ -54,11 +54,13 @@ var init = function() {
 						}
 					}
 					// 延时处理ajax请求
+					ajaxAttrList(config.ajaxURL);
 				})
 			}
 		}, 100);
-		
 		// 延时处理ajax请求
+		ajaxAttrList(config.ajaxURL);
+
 	});
 }
 
@@ -124,6 +126,8 @@ var drwaChildAttributeList = function(level) {
 }
 
 var drawBirdsList = function(birdsData) {
+	// 清空原有内容
+	$('#birdsContent').empty();
 	if (!birdsData || birdsData == '') {
 		return false;
 	}
@@ -133,7 +137,7 @@ var drawBirdsList = function(birdsData) {
 	}
 	for (var i = 0; i < birds.length; i++) {
 		var $bird = '';
-		$bird = '<div class="col-md-4" id="'+birds[i].chineseName+'">\
+		$bird = '<div class="col-md-4 birdBox" id="'+birds[i].chineseName+'">\
 	                    <div class="thumbnail">\
 	                        <img src="'+birds[i].imgURL+'" alt="bird">\
 	                        <div class="caption">\
@@ -147,6 +151,9 @@ var drawBirdsList = function(birdsData) {
 	                    </div>\
 	                </div>';
         $('#birdsContent').append($bird);
+        $('#'+birds[i].chineseName).hide();
+        $bird = $('#'+birds[i].chineseName);
+        $bird.fadeIn(500);
 	}
 }
 
@@ -156,6 +163,8 @@ var drawBirdsList = function(birdsData) {
 var ajaxAttrList = function(ajaxURL) {
 	$.post(ajaxURL, JSON.stringfy(attrData), function(birdsData){
   		// 处理ajax数据
-  		drawBirdsList(birdsData)
+  		drawBirdsList(birdsData);
   	});
 }
+
+drawBirdsList(birdsData);

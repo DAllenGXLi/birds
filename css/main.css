@@ -37,4 +37,7 @@ body {
 	border-bottom-width: 5;
 }
 
-/*属性一级列表ul*/
+.birdBox {
+	height: 260px;
+	overflow: hidden;
+}
