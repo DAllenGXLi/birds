@@ -37,6 +37,11 @@ body {
 	border-bottom-width: 5;
 }
 
+.birdBox {
+	height: 260px;
+	overflow: hidden;
+}
+
 .detailAttrName {
 	font-weight: bold;
 	border-left-color: green;
