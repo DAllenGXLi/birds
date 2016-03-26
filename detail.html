@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>鸟类检索系统</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 轮播组件 -->
+    <link rel='stylesheet' href='css/masterslider.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/ms-showcase2.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/masterslider.main.css' type='text/css' media='all' />
+    <script src="js/modernizr-2.6.2.min.js"></script>
+
+    <script type="text/javascript" src="./js/jquery.js"></script>
+
+    <script type='text/javascript' src='js/masterslider.min.js'></script>
+    <script type='text/javascript' src='js/jquery.easing.min.js'></script>
+    <!-- Loading Bootstrap -->
+    <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script>
+    var ms_grabbing_curosr='images/grabbing.cur',ms_grab_curosr='images/grab.cur';
+    window.$ = jQuery.noConflict();
+    </script>
+    <!--[if IE 8]><link rel="stylesheet" type="text/css" href="css/vc-ie8.css" media="screen"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="css/ie7.css" type="text/css" media="screen"/><![endif]-->
+</head>
+<body>
+    <!-- 初始化图片组件 -->
+    <script type="text/javascript">     
+    $(document).ready(function(){
+        var slider = new MasterSlider();
+        slider.setup('masterslider' , {
+            width:610,
+            height:630,
+            space:5,
+            view:'basic'
+        });
+        slider.control('arrows');   
+        slider.control('scrollbar' , {dir:'h'});    
+        slider.control('thumblist' , {autohide:false ,dir:'v',arrows:false});
+    });
+    </script>
+    <!-- 头部 -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <div class="container header"></div>
+    </nav>
+    <!-- 正文 -->
+    <div class="container body">
+<!-- 图片展示 -->
+<div style="max-width:900px;">
+<div class="ms-showcase2-template ms-dir-v"> 
+ <!-- masterslider -->
+  <div class="master-slider ms-skin-default" id="masterslider">
+    <div class="ms-slide"> <img src="masterslider/loading-2.gif" data-src="images/big/1.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="images/1.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="masterslider/loading-2.gif" data-src="images/big/2.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="images/2.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="masterslider/loading-2.gif" data-src="images/big/3.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="images/3.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="masterslider/loading-2.gif" data-src="images/big/4.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="images/4.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="masterslider/loading-2.gif" data-src="images/big/5.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="images/5.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="masterslider/loading-2.gif" data-src="images/big/6.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="images/6.jpg" alt="thumb" /> </div>
+    <div class="ms-slide"> <img src="masterslider/loading-2.gif" data-src="images/big/7.jpg" alt="lorem ipsum dolor sit"/> <img class="ms-thumb" src="images/7.jpg" alt="thumb" /> </div>
+  </div>
+  <!-- end of masterslider --> 
+</div>
+</div>
+<!-- end of 图片展示 -->
+
+<!-- 文字介绍 -->
+    <div>
+        <h3>北美红雀</h3>
+        <div class="detailAttrName">
+            科
+        </div>
+        <div class="detailAtteDescription">
+            愤怒的小鸟科
+        </div>
+        <div class="detailAttrName">
+            属
+        </div>
+        <div class="detailAtteDescription">
+            愤怒的小鸟属
+        </div>
+        <div class="detailAttrName">
+            详细介绍
+        </div>
+        <div class="detailAtteDescription">
+            北美红雀（学名：Cardinalis cardinalis）：体型中等，体长24厘米，翼展25-31厘米，体重 42-48克。雄鸟呈鲜红色，面部呈黑色，一直伸延至上胸。背部及双翼最为沉色。雌鸟呈灰棕色，双翼、冠及尾羽上有红彩。 雌雄异形，均有羽冠。北美红雀的学名意义是天主教会的枢机，因枢机有着明显的红袍及帽子。皇冠般傲立的穗状头冠和一身烈焰般的羽毛异常醒目，是世界上最美丽耀眼的鸟类之一。
+            留鸟。栖息在林地、花园、丛林及沼泽。它们主要吃谷物，也会吃昆虫及果实。雄鸟是地盘性的，会以歌声来定界。分布于加拿大南部，经美国东部缅因州至得克萨斯州，南下至墨西哥，在夏威夷的大岛及瓦胡岛也有分布。
+        </div>
+    </div>
+
+    </div>
+
+<script type="text/javascript" src="./js/detail.js"></script>
+
+</body>
+</html>

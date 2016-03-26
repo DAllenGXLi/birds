@@ -37,4 +37,14 @@ body {
 	border-bottom-width: 5;
 }
 
-/*属性一级列表ul*/
+.detailAttrName {
+	font-weight: bold;
+	border-left-color: green;
+	border-left-width: 5px;
+	border-left-style: solid;
+	padding-left: 10px;
+}
+
+.detailAtteDescription {
+	padding-left: 15px;
+}
