@@ -80,6 +80,36 @@ var NO_CHILD_LEVEL = 0,
 
 var levelData = [
     {
+        attrName: '感冒',
+        attrType: NO_CHILD_LEVEL,
+        options: [
+            {
+                attrValue: '普通感冒',
+                imgURL: './images/1.jpg'
+            },
+            {
+                attrValue: '普通感冒',
+                imgURL: './images/1.jpg'
+            },
+            {
+                attrValue: '普通感冒',
+                imgURL: './images/1.jpg'
+            },
+            {
+                attrValue: '普通感冒',
+                imgURL: './images/1.jpg'
+            },
+            {
+                attrValue: '普通感冒',
+                imgURL: './images/1.jpg'
+            },
+            {
+                attrValue: '普通感冒',
+                imgURL: './images/1.jpg'
+            }
+        ]
+    },
+    {
         attrName: '儿科',
         attrType: HAS_CHILD_LEVEL,
         childlevel: [
@@ -87,14 +117,6 @@ var levelData = [
                 attrName: '感冒',
                 attrType: NO_CHILD_LEVEL,
                 options: [
-                    {
-                        attrValue: '发烧',
-                        imgURL: './images/1.jpg'
-                    },
-                    {
-                        attrValue: '流行感冒',
-                        imgURL: './images/1.jpg'
-                    },
                     {
                         attrValue: '普通感冒',
                         imgURL: './images/1.jpg'
@@ -110,6 +132,16 @@ var levelData = [
                         attrType: NO_CHILD_LEVEL,
                         options: [
                             {
+                                attrValue: '普通感冒',
+                                imgURL: './images/1.jpg'
+                            }
+                        ]
+                    },
+                    {
+                        attrName: '男科',
+                        attrType: NO_CHILD_LEVEL,
+                        options: [
+                            {
                                 attrValue: '发烧',
                                 imgURL: './images/1.jpg'
                             },
@@ -117,6 +149,38 @@ var levelData = [
                                 attrValue: '流行感冒',
                                 imgURL: './images/1.jpg'
                             },
+                            {
+                                attrValue: '普通感冒',
+                                imgURL: './images/1.jpg'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        attrName: '父科',
+        attrType: HAS_CHILD_LEVEL,
+        childlevel: [
+            {
+                attrName: '感冒',
+                attrType: NO_CHILD_LEVEL,
+                options: [
+                    {
+                        attrValue: '普通感冒',
+                        imgURL: './images/1.jpg'
+                    }
+                ]
+            },
+            {
+                attrName: '其他',
+                attrType: HAS_CHILD_LEVEL,
+                childlevel: [
+                    {
+                        attrName: '妇产科',
+                        attrType: NO_CHILD_LEVEL,
+                        options: [
                             {
                                 attrValue: '普通感冒',
                                 imgURL: './images/1.jpg'
@@ -145,6 +209,7 @@ var levelData = [
             }
         ]
     }
+
 ];
 
 levelData = JSON.stringify(levelData);
@@ -208,7 +273,22 @@ var birdsData = [
 
 birdsData = JSON.stringify(birdsData);
 
-birdDetailData = {
-    
+var birdDetailData = {
+    chineseName: 'chineseName4', // 中文名
+    latinName: 'latinName', // 拉丁名
+    alias: 'alias', // 别名
+    order: 'order', // 目
+    family: 'family', // 科
+    genus: 'genus', // 属
+    description: 'description', // 描述
+    imgURLs: [
+        'images/1.jpg',
+        'images/2.jpg',
+        'images/3.jpg',
+        'images/4.jpg',
+        'images/6.jpg'
+    ]
 }
+
+birdDetailData = JSON.stringify(birdDetailData);
 

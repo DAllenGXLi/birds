@@ -112,14 +112,12 @@ var drwaChildAttributeList = function(level) {
 	}
 	// options
 	else if (level.attrType == NO_CHILD_LEVEL) {
-		// options属性选项
+		// options属性选项--一次性加载所有图片，后期可考虑ajax加载
 		var $attributes = '';
 		for (var i = 0; i < level.options.length; i++) {
-			$attributes += '<div class="col-md-3">\
-								<div class="attribute" attrName="'+level.attrName+'" attrValue="'+level.options[i].attrValue+'">\
+			$attributes += '<span class="attribute" attrName="'+level.attrName+'" attrValue="'+level.options[i].attrValue+'">\
 									<img class="attributeImg" src="'+level.options[i].imgURL+'" />\
-								</div>\
-							</div>';
+								</span>';
 		}
 		$('#'+level.attrName+'Content').append($attributes);
 	}
