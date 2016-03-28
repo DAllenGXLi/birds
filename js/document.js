@@ -274,7 +274,7 @@ var birdsData = [
 birdsData = JSON.stringify(birdsData);
 
 var birdDetailData = {
-    chineseName: 'chineseName4', // 中文名
+    chineseName: '安然', // 中文名
     latinName: 'latinName', // 拉丁名
     alias: 'alias', // 别名
     order: 'order', // 目
@@ -294,7 +294,12 @@ var birdDetailData = {
         'images/3.jpg',
         'images/4.jpg',
         'images/6.jpg',
-        'images/7.jpg'
+        'images/7.jpg',
+        'images/1.jpg',
+        'images/2.jpg',
+        'images/3.jpg',
+        'images/4.jpg',
+        'images/6.jpg'
     ]
 }
 

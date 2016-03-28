@@ -14,7 +14,8 @@ var showDetail = function(birdDetailData) {
 		  <img class="ms-thumb" src="'+birdDetailData.imgURLs[i]+'" alt="thumb" />\
 		   </div>');
 	}
-	// 显示目科属等信息
+	// 显示目科属等信息chineseName
+	$('#chineseName').html(birdDetailData.chineseName);
 	$('#order').html(birdDetailData.order);
 	$('#family').html(birdDetailData.family);
 	$('#genus').html(birdDetailData.genus);
