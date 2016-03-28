@@ -44,14 +44,15 @@ body {
 	overflow: hidden;
 }
 
-.detailAttrName {
+.detailAttr {
 	font-weight: bold;
 	border-left-color: green;
 	border-left-width: 5px;
 	border-left-style: solid;
 	padding-left: 10px;
+	margin-bottom: 5px;
 }
 
-.detailAtteDescription {
+.description {
 	padding-left: 15px;
 }

@@ -280,13 +280,21 @@ var birdDetailData = {
     order: 'order', // 目
     family: 'family', // 科
     genus: 'genus', // 属
-    description: 'description', // 描述
+    description: '北美红雀（学名：Cardinalis cardinalis）：\
+    体型中等，体长24厘米，翼展25-31厘米，体重 42-48克。雄鸟呈鲜红色，面部呈黑色，\
+    一直伸延至上胸。背部及双翼最为沉色。雌鸟呈灰棕色，双翼、冠及尾羽上有红彩。 \
+    雌雄异形，均有羽冠。北美红雀的学名意义是天主教会的枢机，因枢机有着明显的红袍及帽子。\
+    皇冠般傲立的穗状头冠和一身烈焰般的羽毛异常醒目，是世界上最美丽耀眼的鸟类之一。\
+            留鸟。栖息在林地、花园、丛林及沼泽。它们主要吃谷物，也会吃昆虫及果实。\
+            雄鸟是地盘性的，会以歌声来定界。分布于加拿大南部，经美国东部缅因州至得克萨斯州，\
+            南下至墨西哥，在夏威夷的大岛及瓦胡岛也有分布。', // 描述
     imgURLs: [
         'images/1.jpg',
         'images/2.jpg',
         'images/3.jpg',
         'images/4.jpg',
-        'images/6.jpg'
+        'images/6.jpg',
+        'images/7.jpg'
     ]
 }
 
