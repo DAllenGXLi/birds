@@ -143,7 +143,7 @@ var drawBirdsList = function(birdsData) {
 	                            <span>['+birds[i].latinName+']</span>\
 	                            <p>'+birds[i].order+'目,'+birds[i].family+'科,'+birds[i].genus+'属</p>\
 	                            <p>\
-	                            	'+birds[i].description+'<a href="'+config.bireMoreHref+'?birdName='+birds[i].chineseName+'"> >>更多</a>\
+	                            	'+birds[i].description+'<a href="'+config.birdMoreHref+'?birdName='+birds[i].chineseName+'"> >>更多</a>\
 	                            </p>\
 	                        </div>\
 	                    </div>\
