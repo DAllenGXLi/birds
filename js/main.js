@@ -1,8 +1,8 @@
 // 属性数组 数组对象为[{attrName: '' ,attrValue: ''}, ...]
 var attrData = [];
 
-/**
- * 		
+
+/**	
  * 点击属性时候，在标签栏添加标签，并将该属性值添加到attrData数组里
  *  点击标签时候，去除该标签并从attrData数组内移除
  */
@@ -11,16 +11,23 @@ var init = function() {
 		for (var i = 0; i < attrData.length; i++)
 			console.log(attrData[i])
 		// 此值用于判断是否已经存在该属性标签
-		var hasAttrLabel = false;
 		var attrLabel;
 		
 		//检查数组中是否已经有该属性
 		setTimeout(function() {
+			var hasAttrLabel = false;
 			var attrName = $(event.target).parent().attr('attrName');
 			var attrValue = $(event.target).parent().attr('attrValue');
+			var isMultiSelect = $(event.target).parent().attr('attrName');
+
+			// 这里要处理是否是多选的标签数据
+
+
+
 			for (var i=0, length=attrData.length; i<length; i++) {
 				// 如果已经存在该属性名称的标签	
 				if (attrData[i].attrName == attrName) {
+					// 如果标签为单选
 					hasAttrLabel = true;
 					// 如果该属性值不相同，则替换并且重新请求ajax，否则不做处理
 					if (attrData[i].attrValue != attrValue) {
@@ -38,31 +45,70 @@ var init = function() {
 			}
 			// 如果标签不存在，则添加标签
 			if (!hasAttrLabel) {
-				attrLabel = $('<span class="label label-primary attrLabel" attrName="'+attrName+'" attrValue="'+attrValue+'">'+attrName+':'+attrValue+'</span>');
-				$('.labelContent').append(attrLabel);
-				attrData.push({
-					'attrName': attrName,
-					'attrValue': attrValue
-				});
-				// 为新标签注册点击监听
-				attrLabel.click(function(event) {
-					// 弹出attrData里响应数据
-					for (var i=0, length=attrData.length; i<length; i++) {
-						if (attrData[i].attrName == attrLabel.attr('attrName')) {
-							attrData.splice(i, 1);
-							attrLabel.remove();
-						}
-					}
-					// 延时处理ajax请求
-					ajaxAttrList(config.ajaxURL);
-				})
+				addAttrLabel(attrName, attrValue);
 			}
 		}, 100);
 		// 延时处理ajax请求
 		ajaxAttrList(config.ajaxURL);
-
 	});
 }
+
+
+
+/**
+ * 添加属性标签 并且添加点击监听 并且维护attrData数组
+ */
+var addAttrLabel = function(attrName, attrValue) {
+	attrLabel = $('<span class="label label-primary attrLabel" attrName="'+attrName+'" attrValue="'+attrValue+'">'+attrName+':'+attrValue+'</span>');
+	$('.labelContent').append(attrLabel);
+	attrData.push({
+		'attrName': attrName,
+		'attrValue': attrValue
+	});
+	// 为新标签注册点击监听 点击删除对应标签 已经发送ajax	
+	attrLabel.click(function(event) {
+		removeAttrLabel(attrName, attrValue);
+	})
+	ajaxAttrList(config.ajaxURL);	
+}
+
+
+
+/**
+ * 移除属性标签 并且维护attrData数组
+ */
+var removeAttrLabel = function(attrName, attrValue) {
+	// 移除所有的attrName标签
+	if (arguments.length == 1) {
+
+	}
+	else {
+		// 移除相应键值对标签
+		var $label = $('.attrLabel[attrName="'+attrName+'"][attrValue="'+attrValue+'"]');
+		$label.hide(500);
+		setTimeout(function() {
+			$label.remove();
+		}, 500)
+		// 移除attrData数据
+		for (var i=0, length=attrData.length; i<length; i++) {
+			if (attrData[i].attrName == attrName && attrData[i].attrValue == attrValue) {
+				attrData.splice(i, 1);
+			}
+		}
+	}
+	ajaxAttrList(config.ajaxURL);
+}
+
+
+
+/**
+ * 修改属性标签 并且维护attrData数组
+ */
+var changeAttrLabel = function(attrName, attrValue) {
+	removeAttrLabel(attrName, attrValue);
+	addAttrLabel(attrName, attrValue);
+}
+
 
 /**
  * 根据ajax列表数据生成属性列表
@@ -90,6 +136,8 @@ var drawAttributeList = function(levelData) {
 		drwaChildAttributeList(levelData[i]);
 	}
 }
+
+
 
 var drwaChildAttributeList = function(level) {
 	// 列表
@@ -123,6 +171,8 @@ var drwaChildAttributeList = function(level) {
 	}
 }
 
+
+
 var drawBirdsList = function(birdsData) {
 	// 清空原有内容
 	$('#birdsContent').empty();
@@ -143,7 +193,7 @@ var drawBirdsList = function(birdsData) {
 	                            <span>['+birds[i].latinName+']</span>\
 	                            <p>'+birds[i].order+'目,'+birds[i].family+'科,'+birds[i].genus+'属</p>\
 	                            <p>\
-	                            	'+birds[i].description+'<a href="'+config.birdMoreHref+'?birdName='+birds[i].chineseName+'"> >>更多</a>\
+	                            	'+birds[i].description+'<a href="'+config.birdMoreHref+'?birdName='+birds[i].id+'"> >>更多</a>\
 	                            </p>\
 	                        </div>\
 	                    </div>\
@@ -154,6 +204,8 @@ var drawBirdsList = function(birdsData) {
         $bird.fadeIn(500);
 	}
 }
+
+
 
 /**
  * 根据attrData请求ajax数据，并加载到内容框

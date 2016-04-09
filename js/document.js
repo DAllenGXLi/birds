@@ -76,15 +76,18 @@
 // ]
 
 var NO_CHILD_LEVEL = 0,
-    HAS_CHILD_LEVEL = 1;
+    HAS_CHILD_LEVEL = 1,
+    IS_MULTISELECT = 1,
+    IS_NOT_MULTISELECT = 0;
 
 var levelData = [
     {
         attrName: '感冒',
-        attrType: NO_CHILD_LEVEL,
+        attrType: NO_CHILD_LEVEL,   
+        multiSelect: IS_MULTISELECT,
         options: [
             {
-                attrValue: '普通感冒',
+                attrValue: '轻微感冒',
                 imgURL: './images/1.jpg'
             },
             {
@@ -92,124 +95,24 @@ var levelData = [
                 imgURL: './images/1.jpg'
             },
             {
-                attrValue: '普通感冒',
+                attrValue: '流行感冒',
                 imgURL: './images/1.jpg'
             },
             {
-                attrValue: '普通感冒',
+                attrValue: '非流行感冒',
                 imgURL: './images/1.jpg'
             },
             {
-                attrValue: '普通感冒',
+                attrValue: '重度感冒',
                 imgURL: './images/1.jpg'
             },
             {
-                attrValue: '普通感冒',
+                attrValue: '草泥马感冒',
                 imgURL: './images/1.jpg'
             }
         ]
     },
-    {
-        attrName: '儿科',
-        attrType: HAS_CHILD_LEVEL,
-        childlevel: [
-            {
-                attrName: '感冒',
-                attrType: NO_CHILD_LEVEL,
-                options: [
-                    {
-                        attrValue: '普通感冒',
-                        imgURL: './images/1.jpg'
-                    }
-                ]
-            },
-            {
-                attrName: '其他',
-                attrType: HAS_CHILD_LEVEL,
-                childlevel: [
-                    {
-                        attrName: '妇产科',
-                        attrType: NO_CHILD_LEVEL,
-                        options: [
-                            {
-                                attrValue: '普通感冒',
-                                imgURL: './images/1.jpg'
-                            }
-                        ]
-                    },
-                    {
-                        attrName: '男科',
-                        attrType: NO_CHILD_LEVEL,
-                        options: [
-                            {
-                                attrValue: '发烧',
-                                imgURL: './images/1.jpg'
-                            },
-                            {
-                                attrValue: '流行感冒',
-                                imgURL: './images/1.jpg'
-                            },
-                            {
-                                attrValue: '普通感冒',
-                                imgURL: './images/1.jpg'
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        attrName: '父科',
-        attrType: HAS_CHILD_LEVEL,
-        childlevel: [
-            {
-                attrName: '感冒',
-                attrType: NO_CHILD_LEVEL,
-                options: [
-                    {
-                        attrValue: '普通感冒',
-                        imgURL: './images/1.jpg'
-                    }
-                ]
-            },
-            {
-                attrName: '其他',
-                attrType: HAS_CHILD_LEVEL,
-                childlevel: [
-                    {
-                        attrName: '妇产科',
-                        attrType: NO_CHILD_LEVEL,
-                        options: [
-                            {
-                                attrValue: '普通感冒',
-                                imgURL: './images/1.jpg'
-                            }
-                        ]
-                    },
-                    {
-                        attrName: '男科',
-                        attrType: NO_CHILD_LEVEL,
-                        options: [
-                            {
-                                attrValue: '发烧',
-                                imgURL: './images/1.jpg'
-                            },
-                            {
-                                attrValue: '流行感冒',
-                                imgURL: './images/1.jpg'
-                            },
-                            {
-                                attrValue: '普通感冒',
-                                imgURL: './images/1.jpg'
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-
+    
 ];
 
 levelData = JSON.stringify(levelData);
@@ -226,7 +129,7 @@ levelData = JSON.stringify(levelData);
 //         description: '' // 描述
 //     },
 //     // ...
-// ]
+// ]            
 
 var birdsData = [
     {
