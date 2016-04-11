@@ -6,7 +6,8 @@ var attrData = [];
  * 点击属性时候，在标签栏添加标签，并将该属性值添加到attrData数组里
  *  点击标签时候，去除该标签并从attrData数组内移除
  */
-var init = function() {
+var init = function(levelData) {
+	drawAttributeList(levelData);
 	$('.attribute').click(function(event) {
 		// 此值用于判断是否已经存在该属性标签
 		var attrLabel;
@@ -220,5 +221,4 @@ var ajaxAttrList = function(ajaxURL) {
   		drawBirdsList(birdsData);
   	});
 }
-
-drawBirdsList(birdsData);
+// drawBirdsList(birdsData);
