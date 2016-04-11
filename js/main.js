@@ -8,8 +8,6 @@ var attrData = [];
  */
 var init = function() {
 	$('.attribute').click(function(event) {
-		for (var i = 0; i < attrData.length; i++)
-			console.log(attrData[i])
 		// 此值用于判断是否已经存在该属性标签
 		var attrLabel;
 		
@@ -18,31 +16,37 @@ var init = function() {
 			var hasAttrLabel = false;
 			var attrName = $(event.target).parent().attr('attrName');
 			var attrValue = $(event.target).parent().attr('attrValue');
-			var isMultiSelect = $(event.target).parent().attr('attrName');
+			var isMultiSelect = $(event.target).parent().attr('multiSelect');
 
 			// 这里要处理是否是多选的标签数据
+			
+			// 这里处理多选属性
 
 
-
-			for (var i=0, length=attrData.length; i<length; i++) {
-				// 如果已经存在该属性名称的标签	
-				if (attrData[i].attrName == attrName) {
-					// 如果标签为单选
-					hasAttrLabel = true;
-					// 如果该属性值不相同，则替换并且重新请求ajax，否则不做处理
-					if (attrData[i].attrValue != attrValue) {
-						// 清空该样式其他属性的选中框样式
-						// var attrClass = $('.attribute[attrName="'+attrName+'"]').attr('class').replace('attrChoosed', '');
-						// $('.attribute[attrName="'+attrName+'"]').attr('class',attrClass);
-						// 替换文本值
-						$('.attrLabel[attrName="'+attrName+'"]').text(attrName+':'+attrValue);
-						// 修改attrData属性值
-						attrData[i].attrValue = attrValue;
-						// 为该属性添加选中框样式
-						// $(event.target).attr('class', $(event.target).attr('class')+' attrChoosed');
-					}	
+			// 这里处理单选属性（替换attrData内的属性值）
+			if (!isMultiSelect) {
+				for (var i=0, length=attrData.length; i<length; i++) {
+					// 如果已经存在该属性名称的标签	
+					if (attrData[i].attrName == attrName) {
+						// 如果标签为单选
+						hasAttrLabel = true;
+						// 如果该属性值不相同，则替换并且重新请求ajax，否则不做处理
+						if (attrData[i].attrValue != attrValue) {
+							// 清空该样式其他属性的选中框样式
+							// var attrClass = $('.attribute[attrName="'+attrName+'"]').attr('class').replace('attrChoosed', '');
+							// $('.attribute[attrName="'+attrName+'"]').attr('class',attrClass);
+							// 替换文本值
+							$('.attrLabel[attrName="'+attrName+'"]').text(attrName+':'+attrValue);
+							// 修改attrData属性值
+							attrData[i].attrValue = attrValue;
+							// 为该属性添加选中框样式
+							// $(event.target).attr('class', $(event.target).attr('class')+' attrChoosed');
+						}	
+					}
 				}
 			}
+			
+
 			// 如果标签不存在，则添加标签
 			if (!hasAttrLabel) {
 				addAttrLabel(attrName, attrValue);
@@ -56,7 +60,7 @@ var init = function() {
 
 
 /**
- * 添加属性标签 并且添加点击监听 并且维护attrData数组
+ * 添加属性标签 并且添加点击监听 并且维护attrData数组(插入新属性)
  */
 var addAttrLabel = function(attrName, attrValue) {
 	attrLabel = $('<span class="label label-primary attrLabel" attrName="'+attrName+'" attrValue="'+attrValue+'">'+attrName+':'+attrValue+'</span>');
@@ -111,7 +115,7 @@ var changeAttrLabel = function(attrName, attrValue) {
 
 
 /**
- * 根据ajax列表数据生成属性列表
+ * 根据ajax列表数据生成属性列表，需在init前生成列表
  */
 var drawAttributeList = function(levelData) {
 	var $attrNav = '';
@@ -163,7 +167,7 @@ var drwaChildAttributeList = function(level) {
 		// options属性选项--一次性加载所有图片，后期可考虑ajax加载
 		var $attributes = '';
 		for (var i = 0; i < level.options.length; i++) {
-			$attributes += '<span class="attribute" attrName="'+level.attrName+'" attrValue="'+level.options[i].attrValue+'">\
+			$attributes += '<span class="attribute" isMultiSelect="'+level.multiSelect+'" attrName="'+level.attrName+'" attrValue="'+level.options[i].attrValue+'">\
 									<img class="attributeImg" src="'+level.options[i].imgURL+'" />\
 								</span>';
 		}
