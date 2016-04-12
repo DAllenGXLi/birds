@@ -19,10 +19,15 @@ var init = function(levelData) {
 			var attrValue = $(event.target).parent().attr('attrValue');
 			var isMultiSelect = $(event.target).parent().attr('multiSelect');
 
-			// 这里要处理是否是多选的标签数据
-			
-			// 这里处理多选属性
-
+			// 这里处理多选属性 (如果键值都相同，则设置hasAttrLabel为true，不做任何添加)
+			if (isMultiSelect) {
+				for (var i=0, length=attrData.length; i<length; i++) {
+					// 如果已经存在该属性名称的标签	如果属性值也相等
+					if (attrData[i].attrName == attrName && attrData[i].attrValue == attrValue) {
+						hasAttrLabel = true;
+					}
+				}
+			}
 
 			// 这里处理单选属性（替换attrData内的属性值）
 			if (!isMultiSelect) {
@@ -46,7 +51,6 @@ var init = function(levelData) {
 					}
 				}
 			}
-			
 
 			// 如果标签不存在，则添加标签
 			if (!hasAttrLabel) {
