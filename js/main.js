@@ -8,6 +8,7 @@ var attrData = [];
  */
 var init = function(levelData) {
 	drawAttributeList(levelData);
+	// 添加标签点击事件
 	$('.attribute').click(function(event) {
 		// 此值用于判断是否已经存在该属性标签
 		var attrLabel;
@@ -18,6 +19,8 @@ var init = function(levelData) {
 			var attrName = $(event.target).parent().attr('attrName');
 			var attrValue = $(event.target).parent().attr('attrValue');
 			var isMultiSelect = $(event.target).parent().attr('multiSelect');
+			// 选中图片设置透明度为1
+			$(event.target).parent().fadeTo(100, 1.0);
 
 			// 这里处理多选属性 (如果键值都相同，则设置hasAttrLabel为true，不做任何添加)
 			if (isMultiSelect) {
@@ -38,15 +41,13 @@ var init = function(levelData) {
 						hasAttrLabel = true;
 						// 如果该属性值不相同，则替换并且重新请求ajax，否则不做处理
 						if (attrData[i].attrValue != attrValue) {
-							// 清空该样式其他属性的选中框样式
-							// var attrClass = $('.attribute[attrName="'+attrName+'"]').attr('class').replace('attrChoosed', '');
-							// $('.attribute[attrName="'+attrName+'"]').attr('class',attrClass);
-							// 替换文本值
+							// 清除原选定属性的样式
+							$('.attribute[attrValue="'+attrData[i].attrValue+'"]').fadeTo(200, 0.6);
+							// 替换文本值及属性值
 							$('.attrLabel[attrName="'+attrName+'"]').text(attrName+':'+attrValue);
+							$('.attrLabel[attrName="'+attrName+'"]').attr('attrValue', attrValue);
 							// 修改attrData属性值
 							attrData[i].attrValue = attrValue;
-							// 为该属性添加选中框样式
-							// $(event.target).attr('class', $(event.target).attr('class')+' attrChoosed');
 						}	
 					}
 				}
@@ -76,7 +77,8 @@ var addAttrLabel = function(attrName, attrValue) {
 	});
 	// 为新标签注册点击监听 点击删除对应标签 已经发送ajax	
 	attrLabel.click(function(event) {
-		removeAttrLabel(attrName, attrValue);
+		$('[attrValue="'+$(event.target).attr('attrValue')+'"]').fadeTo(200, 0.6);
+		removeAttrLabel(event.target);
 	})
 	ajaxAttrList(config.ajaxURL);	
 }
@@ -86,23 +88,20 @@ var addAttrLabel = function(attrName, attrValue) {
 /**
  * 移除属性标签 并且维护attrData数组
  */
-var removeAttrLabel = function(attrName, attrValue) {
-	// 移除所有的attrName标签
-	if (arguments.length == 1) {
+var removeAttrLabel = function(node) {
+	var attrName = $(node).attr('attrName');
+	var attrValue = $(node).attr('attrValue');
 
-	}
-	else {
-		// 移除相应键值对标签
-		var $label = $('.attrLabel[attrName="'+attrName+'"][attrValue="'+attrValue+'"]');
-		$label.hide(500);
-		setTimeout(function() {
-			$label.remove();
-		}, 500)
-		// 移除attrData数据
-		for (var i=0, length=attrData.length; i<length; i++) {
-			if (attrData[i].attrName == attrName && attrData[i].attrValue == attrValue) {
-				attrData.splice(i, 1);
-			}
+	// 移除相应键值对标签
+	var $label = $('.attrLabel[attrName="'+attrName+'"][attrValue="'+attrValue+'"]');
+	$label.hide(500);
+	setTimeout(function() {
+		$label.remove();
+	}, 500)
+	// 移除attrData数据
+	for (var i=0, length=attrData.length; i<length; i++) {
+		if (attrData[i].attrName == attrName && attrData[i].attrValue == attrValue) {
+			attrData.splice(i, 1);
 		}
 	}
 	ajaxAttrList(config.ajaxURL);
@@ -111,7 +110,7 @@ var removeAttrLabel = function(attrName, attrValue) {
 
 
 /**
- * 修改属性标签 并且维护attrData数组
+ * 修改属性标签 并且维护attrData数组[此方法暂不适用，使用需优化]
  */
 var changeAttrLabel = function(attrName, attrValue) {
 	removeAttrLabel(attrName, attrValue);
