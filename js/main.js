@@ -18,12 +18,13 @@ var init = function(levelData) {
 			var hasAttrLabel = false;
 			var attrName = $(event.target).parent().attr('attrName');
 			var attrValue = $(event.target).parent().attr('attrValue');
-			var isMultiSelect = $(event.target).parent().attr('multiSelect');
+			var multiSelect = $(event.target).parent().attr('multiselect');
 			// 选中图片设置透明度为1
 			$(event.target).parent().fadeTo(100, 1.0);
 
-			// 这里处理多选属性 (如果键值都相同，则设置hasAttrLabel为true，不做任何添加)
-			if (isMultiSelect) {
+			// 这里处理多选属性 (如果键值都相同，则设置hasAttrLabel为true，不做任何添加
+			if (multiSelect == IS_MULTISELECT) {
+
 				for (var i=0, length=attrData.length; i<length; i++) {
 					// 如果已经存在该属性名称的标签	如果属性值也相等
 					if (attrData[i].attrName == attrName && attrData[i].attrValue == attrValue) {
@@ -31,9 +32,8 @@ var init = function(levelData) {
 					}
 				}
 			}
-
 			// 这里处理单选属性（替换attrData内的属性值）
-			if (!isMultiSelect) {
+			else if (multiSelect == IS_NOT_MULTISELECT) {
 				for (var i=0, length=attrData.length; i<length; i++) {
 					// 如果已经存在该属性名称的标签	
 					if (attrData[i].attrName == attrName) {
@@ -52,7 +52,6 @@ var init = function(levelData) {
 					}
 				}
 			}
-
 			// 如果标签不存在，则添加标签
 			if (!hasAttrLabel) {
 				addAttrLabel(attrName, attrValue);
@@ -171,7 +170,7 @@ var drwaChildAttributeList = function(level) {
 		// options属性选项--一次性加载所有图片，后期可考虑ajax加载
 		var $attributes = '';
 		for (var i = 0; i < level.options.length; i++) {
-			$attributes += '<span class="attribute" isMultiSelect="'+level.multiSelect+'" attrName="'+level.attrName+'" attrValue="'+level.options[i].attrValue+'">\
+			$attributes += '<span class="attribute" multiSelect="'+level.multiSelect+'" attrName="'+level.attrName+'" attrValue="'+level.options[i].attrValue+'">\
 									<img class="attributeImg" src="'+level.options[i].imgURL+'" />\
 								</span>';
 		}
