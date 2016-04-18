@@ -150,19 +150,19 @@ var drwaChildAttributeList = function(level) {
 	// 列表
 	if (level.attrType == HAS_CHILD_LEVEL) {
 		var $attrNav = '';
-		for (var j = 0; j < level.childlevel.length; j++) {
+		for (var j = 0; j < level.childLevel.length; j++) {
 			$attrNav = '<div class="panel panel-default">\
 								<div class="panel-heading" role="tab" id="headingOne">\
 									<h4 class="panel-title">\
-										<a role="button" data-toggle="collapse" data-parent="#accordion" href="#'+level.childlevel[j].attrName+'" aria-expanded="false" aria-controls="collapseOne">'+level.childlevel[j].attrName+'</a>\
+										<a role="button" data-toggle="collapse" data-parent="#accordion" href="#'+level.childLevel[j].attrName+'" aria-expanded="false" aria-controls="collapseOne">'+level.childLevel[j].attrName+'</a>\
 									</h4>\
 								</div>\
-								<div id="'+level.childlevel[j].attrName+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">\
-									<div class="panel-body" id="'+level.childlevel[j].attrName+'Content"></div>\
+								<div id="'+level.childLevel[j].attrName+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">\
+									<div class="panel-body" id="'+level.childLevel[j].attrName+'Content"></div>\
 								</div>\
 							</div>';
 			$('#'+level.attrName+'Content').append($attrNav);
-			arguments.callee(level.childlevel[j]);
+			arguments.callee(level.childLevel[j]);
 		}
 	}
 	// options
@@ -179,7 +179,10 @@ var drwaChildAttributeList = function(level) {
 }
 
 
-
+/**
+ * 清空鸟类列表并重新加载
+ * @param  json birdsData 
+ */
 var drawBirdsList = function(birdsData) {
 	// 清空原有内容
 	$('#birdsContent').empty();
@@ -218,9 +221,11 @@ var drawBirdsList = function(birdsData) {
  * 根据attrData请求ajax数据，并加载到内容框
  */
 var ajaxAttrList = function(ajaxURL) {
-	$.post(ajaxURL, JSON.stringfy(attrData), function(birdsData){
+	$.post(ajaxURL, JSON.stringify(attrData), function(birdsData){
   		// 处理ajax数据
   		drawBirdsList(birdsData);
   	});
 }
+
+//  此语句用于测试
 // drawBirdsList(birdsData);

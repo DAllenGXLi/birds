@@ -13,7 +13,7 @@
     // level: {
     //     attrName: '',
     //     attrType: '',
-    //     childlevel: [
+    //     childLevel: [
     //         level: {},
     //         level: {},
     //         ...
@@ -36,7 +36,7 @@
 //     {
 //         attrName: '儿科'，
 //         attrType: HAS_CHILD_LEVEL,
-//         childlevel: [
+//         childLevel: [
 //             {
 //                 attrName: '感冒'，
 //                 attrType: NO_CHILD_LEVEL,
@@ -58,7 +58,7 @@
 //             {
 //                 attrName: '内科'，
 //                 attrType: HAS_CHILD_LEVEL,
-//                 childlevel: {
+//                 childLevel: {
 //                     {
 //                         // level内部
 //                     },
@@ -76,43 +76,93 @@
 // ]
 
 var NO_CHILD_LEVEL = 0,
-    HAS_CHILD_LEVEL = 1,
-    IS_MULTISELECT = 1,
-    IS_NOT_MULTISELECT = 0;
+    HAS_CHILD_LEVEL = 1;
 
 var levelData = [
     {
         attrName: '感冒',
-        attrType: NO_CHILD_LEVEL,   
+        attrType: NO_CHILD_LEVEL,
         multiSelect: IS_MULTISELECT,
         options: [
             {
-                attrValue: '轻微感冒',
+                attrValue: '普通感冒1',
                 imgURL: './images/1.jpg'
             },
             {
-                attrValue: '普通感冒',
+                attrValue: '普通感冒2',
                 imgURL: './images/1.jpg'
             },
             {
-                attrValue: '流行感冒',
+                attrValue: '普通感冒3',
                 imgURL: './images/1.jpg'
             },
             {
-                attrValue: '非流行感冒',
+                attrValue: '普通感冒4',
                 imgURL: './images/1.jpg'
             },
             {
-                attrValue: '重度感冒',
+                attrValue: '普通感冒5',
                 imgURL: './images/1.jpg'
             },
             {
-                attrValue: '草泥马感冒',
+                attrValue: '普通感冒6',
                 imgURL: './images/1.jpg'
             }
         ]
     },
+    {
+        attrName: '儿科',
+        attrType: HAS_CHILD_LEVEL,
+        childLevel: [
+            {
+                attrName: '感冒',
+                attrType: NO_CHILD_LEVEL,
+                options: [
+                    {
+                        attrValue: '普通感冒',
+                        imgURL: './images/1.jpg'
+                    }
+                ]
+            },
+            {
+                attrName: '其他',
+                attrType: HAS_CHILD_LEVEL,
+                childLevel: [
+                    {
+                        attrName: '妇产科',
+                        attrType: NO_CHILD_LEVEL,
+                        options: [
+                            {
+                                attrValue: '普通感冒',
+                                imgURL: './images/1.jpg'
+                            }
+                        ]
+                    },
+                    {
+                        attrName: '男科',
+                        attrType: NO_CHILD_LEVEL,
+                        multiSelect: IS_NOT_MULTISELECT,
+                        options: [
+                            {
+                                attrValue: '发烧',
+                                imgURL: './images/1.jpg'
+                            },
+                            {
+                                attrValue: '流行感冒',
+                                imgURL: './images/1.jpg'
+                            },
+                            {
+                                attrValue: '普通感冒',
+                                imgURL: './images/1.jpg'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     
+
 ];
 
 levelData = JSON.stringify(levelData);
@@ -129,7 +179,7 @@ levelData = JSON.stringify(levelData);
 //         description: '' // 描述
 //     },
 //     // ...
-// ]            
+// ]
 
 var birdsData = [
     {
@@ -177,7 +227,7 @@ var birdsData = [
 birdsData = JSON.stringify(birdsData);
 
 var birdDetailData = {
-    chineseName: '安然', // 中文名
+    chineseName: 'chineseName4', // 中文名
     latinName: 'latinName', // 拉丁名
     alias: 'alias', // 别名
     order: 'order', // 目
@@ -197,12 +247,7 @@ var birdDetailData = {
         'images/3.jpg',
         'images/4.jpg',
         'images/6.jpg',
-        'images/7.jpg',
-        'images/1.jpg',
-        'images/2.jpg',
-        'images/3.jpg',
-        'images/4.jpg',
-        'images/6.jpg'
+        'images/7.jpg'
     ]
 }
 
