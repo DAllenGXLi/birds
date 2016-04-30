@@ -150,19 +150,21 @@ var drwaChildAttributeList = function(level) {
 	// 列表
 	if (level.attrType == HAS_CHILD_LEVEL) {
 		var $attrNav = '';
+		var labelledby = 0;
 		for (var j = 0; j < level.childLevel.length; j++) {
 			$attrNav = '<div class="panel panel-default">\
-								<div class="panel-heading" role="tab" id="headingOne">\
+								<div class="panel-heading" role="tab" id="heading'+labelledby+'">\
 									<h4 class="panel-title">\
 										<a role="button" data-toggle="collapse" data-parent="#accordion" href="#'+level.childLevel[j].attrName+'" aria-expanded="false" aria-controls="collapseOne">'+level.childLevel[j].attrName+'</a>\
 									</h4>\
 								</div>\
-								<div id="'+level.childLevel[j].attrName+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">\
+								<div id="'+level.childLevel[j].attrName+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+labelledby+'">\
 									<div class="panel-body" id="'+level.childLevel[j].attrName+'Content"></div>\
 								</div>\
 							</div>';
 			$('#'+level.attrName+'Content').append($attrNav);
 			arguments.callee(level.childLevel[j]);
+			labelledby++;
 		}
 	}
 	// options
@@ -197,13 +199,13 @@ var drawBirdsList = function(birdsData) {
 		var $bird = '';
 		$bird = '<div class="col-md-4 birdBox" id="'+birds[i].chineseName+'">\
 	                    <div class="thumbnail">\
-	                        <img src="'+birds[i].imgURL+'" alt="bird">\
+	                        <img style="max-height: 160px;" src="'+birds[i].imgURL+'" alt="bird" />\
 	                        <div class="caption">\
 	                            <b>'+birds[i].chineseName+'</b>\
 	                            <span>['+birds[i].latinName+']</span>\
 	                            <p>'+birds[i].order+'目,'+birds[i].family+'科,'+birds[i].genus+'属</p>\
 	                            <p>\
-	                            	'+birds[i].description+'<a href="'+config.birdMoreHref+'?birdName='+birds[i].id+'"> >>更多</a>\
+	                            	'+birds[i].description+'<a href="'+config.birdMoreHref+'?birdName='+birds[i].id+'"> >>更多<br>...<br>...</a>\
 	                            </p>\
 	                        </div>\
 	                    </div>\
@@ -228,4 +230,4 @@ var ajaxAttrList = function(ajaxURL) {
 }
 
 //  此语句用于测试
-// drawBirdsList(birdsData);
+drawBirdsList(birdsData);

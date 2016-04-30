@@ -7,8 +7,14 @@ body {
 	margin-top: 60px;
 }
 
+.headAttrBox {
+	/*height: 600px;*/
+	/*overflow: scroll;*/
+}
+
 .attrLabel {
 	cursor: pointer;
+	margin: 5px;
 }
 
 .attribute {
@@ -42,8 +48,13 @@ body {
 }
 
 .birdBox {
-	height: 260px;
+	height: 280px;
+	margin-bottom: 10px;
 	overflow: hidden;
+}
+
+.birdImg {
+	height: 30px;	
 }
 
 .detailAttr {
